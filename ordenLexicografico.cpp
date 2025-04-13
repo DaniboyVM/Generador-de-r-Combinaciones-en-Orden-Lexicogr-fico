@@ -15,7 +15,7 @@ void generar_combinaciones(int A[], int n, int r, ofstream& csvFile);
 
 int main() {
     int n, r, opc;
-    cout<<"Generador de r-Combinaciones en Orden Lexicogr醘ico"<<endl;
+    cout<<"Generador de r-Combinaciones en Orden Lexicografico"<<endl;
     cout << "Ingrese el tama\244o del conjunto (n): ";
     n = captura();
     while (n <= 0) {
@@ -72,7 +72,7 @@ int main() {
     }
 
     //  encabezados
-    csvFile << "Combinaci髇es:, , conjunto: \n";  // Usar coma como separador
+    csvFile << "Combinaci贸nes:, , conjunto: \n";  // Usar coma como separador
 
     cout << "\nGenerando combinaciones de tama\244o " << r << " en combinaciones.csv...\n";
     generar_combinaciones(A, n, r, csvFile);
@@ -100,19 +100,19 @@ int captura() {
 void generar_combinaciones(int A[], int n, int r, ofstream& csvFile) {
 
     if (n < 1 || r < 0 || r > n) {
-        cerr << "Par醡etros inv醠idos!" << endl;
+        cerr << "Par谩metros inv谩lidos!" << endl;
         return;
     }
 
     int* s = new int[r];
-    int contador = 1;  // Contador de combinaciones
+    long long contador = 1;  // Contador de combinaciones
 
-    // Inicializar primera combinaci髇
+    // Inicializar primera combinaci贸n
     for (int i = 0; i < r; ++i) {
         s[i] = i;
     }
 
-    // Escribir primera combinaci髇 en CSV
+    // Escribir primera combinaci贸n en CSV
     contador++;
     csvFile << "\"";
     for (int i = 0; i < r; ++i) {
@@ -152,7 +152,7 @@ void generar_combinaciones(int A[], int n, int r, ofstream& csvFile) {
             s[j] = s[j - 1] + 1;
         }
 
-        // Escribir combinaci髇 en CSV
+        // Escribir combinaci贸n en CSV
         contador++;
         csvFile << "\"";
         for (int i = 0; i < r; ++i) {
@@ -163,7 +163,7 @@ void generar_combinaciones(int A[], int n, int r, ofstream& csvFile) {
     }
 
     delete[] s;
-    int combinaciones=1, divisor=1;
+    unsigned long long combinaciones=1, divisor=1;
     for(int i=n; i>n-r; i--){
         combinaciones*=i;
     }
@@ -174,5 +174,10 @@ void generar_combinaciones(int A[], int n, int r, ofstream& csvFile) {
     // Mostrar resumen en consola
     cout << "Total de combinaciones generadas: " << (contador-1) << endl;
     cout<<  "Total de combinaciones teoricas C("<<n<<","<<r<<") = "<<combinaciones<<endl;
+    if(contador-1 == combinaciones){
+        cout<<"Los datos coinciden"<<endl;
+    }else{
+        cout<<"Error en el conteo, las combinaciones no coinciden"<<endl;
+    }
 }
 
