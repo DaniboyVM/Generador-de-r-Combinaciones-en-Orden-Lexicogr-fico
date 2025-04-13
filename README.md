@@ -44,3 +44,10 @@ Se incrementa s[m] en 1.
 Los índices a la derecha de m se ajustan secuencialmente: s[j] = s[j-1] + 1 para j > m.
 
 Esto genera la siguiente combinación en orden lexicográfico.
+
+Asi mismo el programa genera un archivo .CSV, llamado combinaciones, en el cual se guarda el conjunto y todas las combinaciones de r. El archivo esta organizado por dos columnas, la primera que se registran todas las combinaciones en orden lexicografico que se hicieron y la segunda columna nos dice el conjunto universo en el cual se hacen las combinaciones.
+
+El programa hace una doblee verificacion del conteo de combinaciones, una por la forma teorica de  C(n, r) = n! / (r! * (n-r)!). y la otra, que es por medio de un contador.
+
+
+
